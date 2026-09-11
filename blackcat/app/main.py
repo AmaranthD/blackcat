@@ -2,6 +2,9 @@ from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from app.database import init_db
 from app.routes.identities import router as identities_router
+from app.routes.applications import router as applications_router
+from app.routes.entitlements import router as entitlements_router
+from app.routes.assignments import router as assignments_router
 import os
 
 # Initialize database
@@ -16,6 +19,9 @@ app = FastAPI(
 
 # Include routers
 app.include_router(identities_router)
+app.include_router(applications_router)
+app.include_router(entitlements_router)
+app.include_router(assignments_router)
 
 
 @app.get("/")
